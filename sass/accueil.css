@@ -30,7 +30,7 @@ header {
   align-items: center;
 }
 header .logo {
-  margin-top: 30px;
+  padding-top: 30px;
   padding-bottom: 15px;
   display: flex;
   justify-content: center;
