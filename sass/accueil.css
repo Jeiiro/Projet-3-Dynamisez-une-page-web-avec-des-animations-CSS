@@ -47,7 +47,7 @@ header nav {
   display: flex;
   justify-content: center;
   gap: 1.06rem;
-  padding: 20px 20px 20px 80px;
+  padding: 20px 0px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: var(--main-font-family);
   color: var(--tertiary-bg-color);
@@ -55,6 +55,7 @@ header nav {
 }
 header nav form {
   border: none !important;
+  max-width: 100px;
 }
 header nav form input {
   border: none;
@@ -62,6 +63,7 @@ header nav form input {
   color: var(--tertiary-bg-color);
   font-family: var(--main-font-family);
   font-weight: bold;
+  max-width: 100px;
 }
 header nav form input:focus {
   outline: none !important;
@@ -174,7 +176,6 @@ main .explanation_container .explanation_functioning {
   display: flex;
   flex-direction: column;
   padding: 50px 10px 50px 10px;
-  width: 100%;
 }
 main .explanation_container .explanation_functioning h2 {
   font-size: 1.5rem;
@@ -284,19 +285,29 @@ main .explanation_container .explanation_functioning .explanation_steps .explana
 }
 .restaurant_container .restaurant_list .card .card_content .card_fav {
   font-size: 1.5rem;
-}
-.restaurant_container .restaurant_list .card .card_content .card_fav .fa-solid.fa-heart {
-  display: none;
+  position: relative;
+  width: 24px;
+  height: 24px;
 }
 .restaurant_container .restaurant_list .card .card_content .card_fav:hover .fa-solid.fa-heart {
-  display: inline;
+  animation: fav 1s ease 1 both;
+}
+.restaurant_container .restaurant_list .card .card_content .card_fav:hover .fa-regular {
+  opacity: 1;
+  animation: nofav 1s ease 1 both;
+}
+.restaurant_container .restaurant_list .card .card_content .card_fav .fa-regular.fa-heart,
+.restaurant_container .restaurant_list .card .card_content .card_fav .fa-solid.fa-heart {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.restaurant_container .restaurant_list .card .card_content .card_fav .fa-solid.fa-heart {
+  opacity: 0;
   background: linear-gradient(180deg, var(--main-color) 0%, var(--secondary-color) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-.restaurant_container .restaurant_list .card .card_content .card_fav:hover .fa-regular.fa-heart {
-  display: none;
 }
 .restaurant_container .restaurant_list .card .card_new {
   font-family: var(--main-font-family);
@@ -311,6 +322,22 @@ main .explanation_container .explanation_functioning .explanation_steps .explana
   z-index: 1;
 }
 
+@keyframes fav {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes nofav {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 /*********** Footer ***************/
 footer {
   background-color: var(--tertiary-bg-color);
@@ -319,7 +346,6 @@ footer .footer_container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
   padding: 22px 25px;
   font-family: var(--main-font-family);
   color: white;
